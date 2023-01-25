@@ -1,0 +1,9 @@
+{% extends '_base.html' %}
+{% block title %} List_view {% endblock %}
+{% block content %}
+        <h3>{{ product.title }}</h3>
+        <p>{{ product.description }}</p>
+        <p>{{ product.price }}</p>
+         {{ datetime_created }}
+
+{% endblock %}

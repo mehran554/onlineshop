@@ -1,0 +1,13 @@
+{% extends '_base.html' %}
+{% block title %} List_view {% endblock %}
+{% block content %}
+    {% for product in products %}
+        <a href="{{ product.get_absolute_url }}"><h3>{{ product.title }}</h3></a>
+        {#        <a href="{% url 'product_detail' product.id %}"><h3>{{ product.title }}</h3></a>#}
+
+        <p>{{ product.description }}</p>
+
+    {% endfor %}
+
+
+{% endblock %}
