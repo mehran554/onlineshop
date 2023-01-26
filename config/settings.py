@@ -11,9 +11,10 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
-
+import os
 # for environments variable
 from environs import Env
+
 env = Env()
 env.read_env()
 
@@ -149,7 +150,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 SITE_ID = 1
-STATIC_URL = 'static/'
+
+# Static Config
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [BASE_DIR / 'static']
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
