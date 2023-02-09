@@ -14,6 +14,7 @@ from pathlib import Path
 import os
 # for environments variable
 from environs import Env
+from django.contrib.messages import constants as message
 
 env = Env()
 env.read_env()
@@ -50,6 +51,8 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'crispy_forms',
+    'ckeditor',
+    'rosetta',
 
     # local apps
     'accounts',
@@ -72,7 +75,6 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        # 'DIRS': [str(BASE_DIR.joinpath('templates'))],
         'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -139,10 +141,15 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
-
-TIME_ZONE = 'UTC'
-
+# LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'fa'
+LANGUAGES = (
+    ('en', 'English'),
+    ('fa', 'Persian'),
+)
+# TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Tehran'
+USE_L10N = True
 USE_I18N = True
 
 USE_TZ = True
@@ -155,9 +162,11 @@ SITE_ID = 1
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 
+# Ckeditor Config
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # Default primary key field type
-# https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
+
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'accounts.CustomUser'
@@ -170,6 +179,10 @@ ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
-
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'about'
+
+# For Messages FrameWork
+MESSAGE_TAGS = {
+    message.ERROR: 'danger'
+}

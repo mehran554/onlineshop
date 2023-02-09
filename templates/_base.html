@@ -31,11 +31,19 @@
 
 </head>
 <body dir='rtl'>
-{#{% if user.is_authenticated %}#}
-{#     <span> Hello {{ user.username }}</span> | <a style="color: darkblue" href="{% url 'account_logout' %}">logout</a>#}
-{# {% else %}#}
-{#    <a style="color: darkblue"   href="{%  url 'account_login' %}">login</a> | <a style="color: darkblue" href="{% url 'account_logout' %}">logout</a> | <a style="color: darkblue" href="{% url 'account_signup' %}">Sign UP</a>#}
-{#{% endif %}#}
+{% if user.is_authenticated %}
+    <span> Hello {{ user.username }}</span> | <a style="color: darkblue" href="{% url 'account_logout' %}">logout</a>
+{% else %}
+    <a style="color: darkblue" href="{% url 'account_login' %}">login</a> |
+    <a style="color: darkblue" href="{% url 'account_logout' %}">logout</a> |
+    <a style="color: darkblue" href="{% url 'account_signup' %}">Sign UP</a>
+{% endif %}
+
+<!--Start Ckeditor JavaScript -->
+<script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
+<script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
+<!-- End Ckeditor JavaScript -->
+
 <!-- Header Start -->
 <header class="header">
     <div class="header-inner fixed-header">
@@ -126,6 +134,18 @@
     </div>
 </header>
 <!-- Header End -->
+                     <div class="container">
+                            {% if messages %}
+                                    {% for message in messages %}
+                                       <div class="alert alert-{{ message.tags }}">
+                                                {{ message }}
+                                       </div>
+                                    {% endfor %}
+
+                           {% endif %}
+                     </div>
+
+
 <div class="container">
 
 

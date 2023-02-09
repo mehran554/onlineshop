@@ -1,0 +1,64 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-02-08 20:23+0330\n"
+"PO-Revision-Date: 2023-02-07 22:58+0330\n"
+"Last-Translator:   <admin@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Translated-Using: django-rosetta 0.9.8\n"
+
+#: .\models.py:26
+msgid "VeryBad"
+msgstr "خیلی بد"
+
+#: .\models.py:27
+msgid "Bad"
+msgstr "بد"
+
+#: .\models.py:28
+msgid "Normal"
+msgstr "معمولی"
+
+#: .\models.py:29
+msgid "Good"
+msgstr "خوب"
+
+#: .\models.py:30
+msgid "Prefect"
+msgstr "عالی"
+
+#: .\templates\products\product_details.html:32
+msgid "Product details of "
+msgstr "جزییات محصول"
+
+#: .\templates\products\product_details.html:58
+msgid "$"
+msgstr "تومان"
+
+#: .\templates\products\product_details.html:71
+msgid "add to card"
+msgstr "اضافه کردن به سبد"
+
+#: .\templates\products\product_details.html:75
+msgid "categories"
+msgstr "دسته بندی ها"
+
+#: .\templates\products\product_details.html:91
+msgid "product description"
+msgstr "توضیحات محصول"
+
+#: .\views.py:37
+msgid "Message Success"
+msgstr "ارسال نظر موفقیت آمیز بود "
