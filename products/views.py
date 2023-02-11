@@ -37,3 +37,4 @@ class CommentCreateView(generic.CreateView):
         messages.success(self.request, _('Message Success'))
         # messages.success(self.request, 'موفقیت آمیز!!!')
         return super().form_valid(form)
+
