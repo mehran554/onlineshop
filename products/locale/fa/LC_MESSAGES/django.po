@@ -48,7 +48,7 @@ msgid "$"
 msgstr "تومان"
 
 #: .\templates\products\product_details.html:71
-msgid "add to card"
+msgid "add to cart"
 msgstr "اضافه کردن به سبد"
 
 #: .\templates\products\product_details.html:75
