@@ -1,5 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 {% load static %}
+{% load i18n %}
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
@@ -31,11 +32,19 @@
 
 </head>
 <body dir='rtl'>
-{#{% if user.is_authenticated %}#}
-{#     <span> Hello {{ user.username }}</span> | <a style="color: darkblue" href="{% url 'account_logout' %}">logout</a>#}
-{# {% else %}#}
-{#    <a style="color: darkblue"   href="{%  url 'account_login' %}">login</a> | <a style="color: darkblue" href="{% url 'account_logout' %}">logout</a> | <a style="color: darkblue" href="{% url 'account_signup' %}">Sign UP</a>#}
-{#{% endif %}#}
+{% if user.is_authenticated %}
+    <span> Hello {{ user.username }}</span> | <a style="color: darkblue" href="{% url 'account_logout' %}">logout</a>
+{% else %}
+    <a style="color: darkblue" href="{% url 'account_login' %}">login</a> |
+{#    <a style="color: darkblue" href="{% url 'account_logout' %}">logout</a> |#}
+    <a style="color: darkblue" href="{% url 'account_signup' %}">Sign UP</a>
+{% endif %}
+
+<!--Start Ckeditor JavaScript -->
+<script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
+<script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
+<!-- End Ckeditor JavaScript -->
+
 <!-- Header Start -->
 <header class="header">
     <div class="header-inner fixed-header">
@@ -87,7 +96,7 @@
                         <li class="header-toolbar__item mini-cart-item">
                             <a href="#miniCart" class="header-toolbar__btn toolbar-btn mini-cart-btn">
                                 <i class="flaticon flaticon-shopping-cart"></i>
-                                <sup class="mini-cart-count">2</sup>
+                                <sup class="mini-cart-count">{{ cart|length }}</sup>
                             </a>
                         </li>
                         <li class="header-toolbar__item user-info">
@@ -95,18 +104,24 @@
                                 <i class="flaticon flaticon-user"></i>
                             </a>
                             <ul class="user-info-menu">
-                                <li>
-                                    <a class="text-right" href="my-account.html">حساب کاربری</a>
-                                </li>
-                                <li>
-                                    <a class="text-right" href="cart.html">سبد خرید</a>
-                                </li>
-                                <li>
-                                    <a class="text-right" href="wishlist.html">علاقه مندی ها</a>
-                                </li>
-                                <li>
-                                    <a class="text-right" href="order-tracking.html">تاریخچه سفارشات</a>
-                                </li>
+                                {% if user.is_authenticated %}
+                                    <li>
+                                        {#                                    <a class="text-right" href="my-account.html">حساب کاربری</a>#}
+                                        <a class="text-right"
+                                           href="{% url 'account_logout' %}">{% trans 'Logout' %} </a>
+                                    </li>
+                                    <li>
+                                        <a class="text-right" href="profile.html">{% trans 'Profile' %}</a>
+                                    </li>
+                                {% else %}
+                                    <li>
+                                        <a class="text-right" href="{% url 'account_login' %}">{% translate 'Login' %}</a>
+                                    </li>
+                                    <li>
+                                        <a class="text-right" href="{% url 'account_signup' %}">{% trans 'SignUp' %}</a>
+                                    </li>
+
+                                {% endif %}
                             </ul>
                         </li>
                         <li class="header-toolbar__item">
@@ -127,6 +142,14 @@
 </header>
 <!-- Header End -->
 <div class="container">
+    {% if  messages %}
+        <div class="container">
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}"> {{ message }}</div>
+            {% endfor %}
+        </div>
+
+    {% endif %}
 
 
     {% block content %}
@@ -135,6 +158,10 @@
         {#                crossorigin="anonymous"></script>#}
 
     {% endblock %}
+       <!-- Mini Cart Start -->
+{#  {% include 'cart/cart_sidebar.html' %}#}
+    <!-- Mini Cart End -->
+
     <!-- ************************* JS Files ************************* -->
 
     <!-- jQuery JS -->
