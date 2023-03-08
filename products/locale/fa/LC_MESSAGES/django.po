@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-03 12:30+0330\n"
-"PO-Revision-Date: 2023-03-03 12:25+0330\n"
+"POT-Creation-Date: 2023-03-08 18:11+0330\n"
+"PO-Revision-Date: 2023-03-08 18:16+0330\n"
 "Last-Translator:   <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -19,66 +19,75 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Translated-Using: django-rosetta 0.9.8\n"
 
-#: .\models.py:13
+#: .\models.py:11
+msgid "Product Text"
+msgstr "توضیحات محصول"
+
+#: .\models.py:12
+msgid "Product ShortText"
+msgstr "توضیح مختصرمحصول"
+
+#: .\models.py:14
 msgid "Product image"
 msgstr "تصویر محصول"
 
-#: .\models.py:17
+#: .\models.py:18
 msgid "product_create_date"
 msgstr "تاریخ ایجاد محصول"
 
-#: .\models.py:29
+#: .\models.py:30
 msgid "VeryBad"
 msgstr "خیلی بد"
 
-#: .\models.py:30
+#: .\models.py:31
 msgid "Bad"
 msgstr "بد"
 
-#: .\models.py:31
+#: .\models.py:32
 msgid "Normal"
 msgstr "معمولی"
 
-#: .\models.py:32
+#: .\models.py:33
 msgid "Good"
 msgstr "خوب"
 
-#: .\models.py:33
+#: .\models.py:34
 msgid "Prefect"
 msgstr "عالی"
 
-#: .\models.py:37
+#: .\models.py:38
 msgid "Comment author"
 msgstr "نظر نویسنده"
 
-#: .\models.py:38
-msgid "Text"
+#: .\models.py:39
+#| msgid "Comment author"
+msgid "comment_text"
 msgstr "متن دیدگاه"
 
-#: .\models.py:39
+#: .\models.py:40
 msgid "Point"
 msgstr "امتیاز"
 
-#: .\templates\products\product_details.html:29
+#: .\templates\products\product_details.html:32
 msgid "product_details"
 msgstr " جزییات محصول "
 
-#: .\templates\products\product_details.html:53
+#: .\templates\products\product_details.html:56
 msgid "$"
 msgstr "تومان"
 
-#: .\templates\products\product_details.html:70
-#: .\templates\products\product_list.html:91
+#: .\templates\products\product_details.html:72
+#: .\templates\products\product_list.html:93
 msgid "add to card"
 msgstr "اضافه کردن به سبد خرید "
 
-#: .\templates\products\product_details.html:80
+#: .\templates\products\product_details.html:82
 msgid "categories"
 msgstr "دسته بندی"
 
-#: .\templates\products\product_details.html:96
+#: .\templates\products\product_details.html:98
 msgid "product description"
 msgstr "توضیحات محصول "
 
-#~ msgid "add_to_cart"
-#~ msgstr "اضافه کردن به سبد خرید"
+#~ msgid "Text"
+#~ msgstr "متن دیدگاه"

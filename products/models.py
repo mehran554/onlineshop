@@ -8,7 +8,8 @@ from django.utils import timezone
 
 class Product(models.Model):
     title = models.CharField(max_length=200)
-    description = models.TextField()
+    description = RichTextField(_('Product Text'))
+    short_description = models.TextField(_('Product ShortText'), blank=True)
     price = models.PositiveIntegerField(default=0)
     image = models.ImageField(verbose_name=_('Product image'), upload_to='product/product_cover', blank=True)
     # image = models.ImageField(verbose_name=_('Product image'), upload_to='product/product_cover', blank=False)
@@ -35,8 +36,8 @@ class Comments(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='comments')
     author = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name='comments',
                                verbose_name=_('Comment author'))
-    body = RichTextField(verbose_name=_('Text'))
-    stars = models.CharField(max_length=10, choices=Product_STARS, verbose_name=_('Point'))
+    body = RichTextField(_('comment_text'))
+    stars = models.CharField(_('Point'), max_length=10, choices=Product_STARS)
     datetime_create = models.DateTimeField(auto_now_add=True)
     datetime_modified = models.DateTimeField(auto_now=True)
     active = models.BooleanField(default=True)
