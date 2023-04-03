@@ -110,9 +110,12 @@
                                 <div class="col-sm-6 text-sm-right">
                                     <form action="{% url 'cart:cart_clear' %}" method="post">
                                         {% csrf_token %}
-                                        <button type="submit" class="btn  btn-bg-dark btn-color-white btn-hover-2">خالی
-                                            کردن سبد خرید
-                                        </button>
+                                        {% if cart %}
+                                            <button type="submit" class="btn  btn-bg-dark btn-color-white btn-hover-2">
+                                            {% trans 'Empty Cart' %}
+                                            </button>
+
+                                        {% endif %}
 
                                     </form>
 
@@ -134,16 +137,19 @@
                                         </div>
                                         <div class="cart-calculator__item--value">
                                                 <span class="product-price-wrapper">
-                                                    <span class="money">{{ cart.get_total_price|intcomma:False|translate_number }}تومان </span>
+                                                    <span class="money">{{ cart.get_total_price|intcomma:False|translate_number }}{% trans '$' %} </span>
                                                 </span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <a href="checkout.html"
+                            {% if cart %}
+                            <a href="{% url 'order_create' %}"
                                class="btn btn-fullwidth btn-bg-red btn-color-white btn-hover-2">
-                                ثبت سفارش
+                                {% trans 'payment' %}
                             </a>
+
+                            {% endif %}
                         </div>
                     </div>
                 </div>

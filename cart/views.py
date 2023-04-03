@@ -3,9 +3,11 @@ from .cart import Cart
 from django.contrib import messages
 from products.models import Product
 from cart.forms import FormAddProductToCart
+from django.utils.translation import gettext as _
 from django.views.decorators.http import require_POST
 
 
+@require_POST
 def add_to_cart_view(request, product_id):
     cart = Cart(request)
     product = get_object_or_404(Product, id=product_id)
@@ -15,7 +17,8 @@ def add_to_cart_view(request, product_id):
         quantity = cleaned_data['quantity']
         replace_current_qty = cleaned_data['is_add']
         cart.add(product, quantity, replace_current_qty)
-    return redirect('cart:cart_detail')
+    # return redirect('cart:cart_detail')
+    return redirect('product_list')
 
 
 def cart_detail_view(request):
@@ -36,7 +39,10 @@ def cart_remove_view(request, product_id):
     cart = Cart(request)
     product = get_object_or_404(Product, id=product_id)
     cart.remove(product)
-    return redirect('cart:cart_detail')
+    # if len(cart):
+    #     return redirect('cart:cart_detail')
+    # else:
+    return redirect('product_list')
 
 
 def cart_total_price(request):
@@ -50,8 +56,12 @@ def cart_total_price(request):
 @require_POST
 def cart_clear_view(request):
     cart = Cart(request)
-    cart.clear()
-    return redirect('cart:cart_detail')
+    if len(cart):
+        cart.clear()
+        messages.warning(request, _("Successfully Empty Your Cart"))
+    else:
+        messages.error(request, _("You Cart Is Already Empty!!!! "))
+    return redirect('product_list')
 # @require_POST
 # def cart_clear_view(request):
 #     cart = Cart(request)

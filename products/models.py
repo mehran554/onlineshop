@@ -12,7 +12,6 @@ class Product(models.Model):
     short_description = models.TextField(_('Product ShortText'), blank=True)
     price = models.PositiveIntegerField(default=0)
     image = models.ImageField(verbose_name=_('Product image'), upload_to='product/product_cover', blank=True)
-    # image = models.ImageField(verbose_name=_('Product image'), upload_to='product/product_cover', blank=False)
     active = models.BooleanField(default=True)
     # datetime_created = models.DateTimeField(auto_now_add=True)
     datetime_created = models.DateTimeField(verbose_name=_('product_create_date'), default=timezone.now)

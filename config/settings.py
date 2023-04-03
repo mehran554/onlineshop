@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-
+from django.contrib import messages
 from pathlib import Path
 import os
 # for environments variable
@@ -61,6 +61,8 @@ INSTALLED_APPS = [
     'products',
     'cart',
     'persian_translate',
+    'orders',
+    'payment',
 ]
 
 MIDDLEWARE = [
@@ -173,6 +175,10 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # Ckeditor Config
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger'
+}
+
 # Default primary key field type
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -183,10 +189,11 @@ AUTH_USER_MODEL = 'accounts.CustomUser'
 ACCOUNT_SESSION_REMEMBER = True
 ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False
 ACCOUNT_USERNAME_REQUIRED = False
-# ACCOUNT_AUTHENTICATION_METHOD = 'email'
-# ACCOUNT_EMAIL_REQUIRED = True
-# ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_UNIQUE_EMAIL = True
 # ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+
 
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'about'
